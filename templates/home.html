@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Welcome to My Flask App</h1>
+<p>If you want to start mic recording, please click here...</p>
+
+<!-- Form to trigger mic recording -->
+<form id="mic-form" action="{{ url_for('submit') }}" method="POST">
+    <button type="submit">Start</button>
+</form>
+
+<!-- Placeholder for showing the "mic recording started" message -->
+<p id="status-message" style="color: green; font-weight: bold; display: none;">Mic recording started...</p>
+
+<script>
+    // Add an event listener to the form
+    document.getElementById('mic-form').addEventListener('submit', function (event) {
+        // Prevent immediate form submission to show message first
+        const statusMessage = document.getElementById('status-message');
+        statusMessage.style.display = 'block'; // Show the message
+    });
+</script>
+{% endblock %}
+
